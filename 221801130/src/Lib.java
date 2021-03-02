@@ -51,4 +51,14 @@ public class Lib {
 		return countWord;
 	}
 	
+	 public static List<HashMap.Entry<String, Integer>> getSortedList(Map<String, Integer> map) {
+		 List<Map.Entry<String,Integer>> lstEntry = new ArrayList<>(map.entrySet());
+		 Collections.sort(lstEntry,((o1, o2) -> {
+			 if (o1.getValue().equals(o2.getValue()))
+                 return o1.getKey().compareTo(o2.getKey());
+		     else
+			     return o2.getValue().compareTo(o1.getValue());
+		 }));
+		 return lstEntry;
+	 }
 }

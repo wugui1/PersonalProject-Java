@@ -27,6 +27,7 @@ public class WordCount {
 		StringBuffer textBuffer = new StringBuffer();
 		String text;
 		Map<String,Integer> map = new HashMap<String, Integer>();
+		List<Map.Entry<String,Integer>> lstEntry = new ArrayList<>(map.entrySet());
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
 			while ((s = br.read()) != -1)         
@@ -35,16 +36,10 @@ public class WordCount {
 			countChar=Lib.countChar(text);
 			countLine=Lib.countLines(text);
 			countWord=Lib.countWords(text, map);
-			System.out.println(countChar);
-			System.out.println(countWord);
-			System.out.println(countLine);
-			List<Map.Entry<String,Integer>> lstEntry = new ArrayList<>(map.entrySet());
-			Collections.sort(lstEntry,((o1, o2) -> {
-				if (o1.getValue().equals(o2.getValue()))
-                    return o1.getKey().compareTo(o2.getKey());
-				else
-					return o2.getValue().compareTo(o1.getValue());
-		    }));
+			System.out.println("characters:"+countChar);
+			System.out.println("words:"+countWord);
+			System.out.println("lines:"+countLine);
+			lstEntry=Lib.getSortedList(map);
 		    Iterator<Map.Entry<String,Integer>> iter = lstEntry.iterator();
 		     while (iter.hasNext()) {
 		    	 Map.Entry<String,Integer> m = (Map.Entry<String,Integer>) iter.next();
