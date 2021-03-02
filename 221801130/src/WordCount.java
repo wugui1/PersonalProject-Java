@@ -13,6 +13,7 @@ public class WordCount {
 		String path = input.next();
 		int countChar = 0;
 		int countWord = 0;
+		int countLine = 0;
 		String s;
 		StringBuffer textBuffer = new StringBuffer();
 		String text;
@@ -22,7 +23,8 @@ public class WordCount {
 			while ((s = br.readLine()) != null) {		         
 		        textBuffer.append(s);
 		        textBuffer.append(" ");
-				countChar += s.length();	 
+				countChar += s.length();
+				countLine++;
 			}
 			text = textBuffer.toString();
 			text = text.toLowerCase();
@@ -44,6 +46,7 @@ public class WordCount {
 			}
 			System.out.println(countChar);
 			System.out.println(countWord);
+			System.out.println(countLine);
 	    }
 	    catch (IOException e) {
 	        e.printStackTrace();
