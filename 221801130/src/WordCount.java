@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class WordCount {
+	
 	public static void main(String[] args) throws IOException {
 		Scanner input = new Scanner(System.in);
 		String path = input.next();
@@ -22,20 +23,18 @@ public class WordCount {
 		int countLine = 0;
 		int num=0;
 		boolean isWord = true;
-		String s;
+		int s;
 		StringBuffer textBuffer = new StringBuffer();
 		String text;
 		String [] textArrays;
 		Map<String,Integer> map = new HashMap<String, Integer>();
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
-			while ((s = br.readLine()) != null) {		         
-		        textBuffer.append(s);
-		        textBuffer.append(" ");
-				countChar += s.length();
-				countLine++;
-			}
+			while ((s = br.read()) != -1)         
+				textBuffer.append((char)s);			
 			text = textBuffer.toString();
+			countChar=Lib.countChar(text);
+			countLine=Lib.countLines(text);
 			text = text.toLowerCase();
 			text = text.replaceAll("[^A-Za-z0-9]", " ");
 			textArrays = text.split("\\s+");
@@ -87,5 +86,6 @@ public class WordCount {
 	        e.printStackTrace();
 	    }
 	}
+	
 }
 
