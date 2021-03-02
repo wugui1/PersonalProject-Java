@@ -17,13 +17,12 @@ public class WordCount {
     }
 
 	public static void main(String[] args) throws IOException {
-		Scanner input = new Scanner(System.in);
-		String path = input.next();
-		String outPutPath = input.next();
-		WordCount wordCount = new WordCount(path);
-		writeFile(outPutPath);
-		    
-	   
+		 if (args.length != 2){
+	            System.out.println("wrong");
+	            return;
+	        }
+	     WordCount wordCount = new WordCount(args[0]);
+	     writeFile(args[1]); 
 	}
 	
 	public static String readFile(String path) throws IOException {
@@ -47,20 +46,20 @@ public class WordCount {
 	public static void writeFile(String Path) throws IOException {
 	    List<Map.Entry<String,Integer>> lstEntry = new ArrayList<>(map.entrySet());
 	    lstEntry=Lib.getSortedList(map);
-		 Iterator<Map.Entry<String,Integer>> iter = lstEntry.iterator();
-		 int num = 0;
-		 BufferedWriter writer = new BufferedWriter(new FileWriter(Path));
-		 StringBuilder str = new StringBuilder("characters: " + countChar + '\n' + "words: " + countWord + '\n'
+		Iterator<Map.Entry<String,Integer>> iter = lstEntry.iterator();
+		int num = 0;
+		BufferedWriter writer = new BufferedWriter(new FileWriter(Path));
+		StringBuilder str = new StringBuilder("characters: " + countChar + '\n' + "words: " + countWord + '\n'
 	                + "lines: " + countLine + '\n');
-	     while (iter.hasNext()) {
-	    	 Map.Entry<String,Integer> m = (Map.Entry<String,Integer>) iter.next();
-	         str.append(m.getKey()).append(": ").append(m.getValue()).append("\n");
-	         num ++;
-	         if (num == 10)
-	        	 break;
-	     }
-	     writer.write(str.toString());
-	     writer.close();
+	    while (iter.hasNext()) {
+	    	Map.Entry<String,Integer> m = (Map.Entry<String,Integer>) iter.next();
+	        str.append(m.getKey()).append(": ").append(m.getValue()).append("\n");
+	        num ++;
+	        if (num == 10)
+	        	break;
+	    }
+	    writer.write(str.toString());
+	    writer.close();
 	}
 	
 }
