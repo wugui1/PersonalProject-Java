@@ -38,9 +38,9 @@ public class Lib {
 		    }
 		}
 	        if (isWord == true) {
-		    int count=0;
+		    int count = 0;
 		    if (map.get(textArrays[i]) == null) {
-		        count=1;
+		        count = 1;
 		    } else {
 		        count = map.get(textArrays[i]).intValue() + 1;
 		    }
