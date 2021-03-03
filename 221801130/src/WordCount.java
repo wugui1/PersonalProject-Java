@@ -12,8 +12,8 @@ public class WordCount {
         map = new HashMap<String, Integer>();
         text = readFile(fileName);
         countChar = Lib.countChar(text);
-        countWord = Lib.countLines(text);
-        countLine = Lib.countWords(text, map);
+        countWord = Lib.countWords(text, map);
+        countLine = Lib.countLines(text);
     }
 
     public static void main(String[] args) throws IOException {
