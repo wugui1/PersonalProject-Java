@@ -10,7 +10,7 @@ public class Lib {
         int count = 0;
         String[] textArrays = text.split("\n|\r\n");
         for (String validLine : textArrays) {
-            if (!validLine.replaceAll("\r|\n", "").trim().equals("")) {
+            if (!validLine.trim().equals("")) {
                 count++;
             }
         }
